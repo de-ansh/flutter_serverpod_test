@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: artikool
+      POSTGRES_PASSWORD: "soDaP83WIGQEB7z4rlVbUK-u8fj4VyEs"
+    volumes:
+      - artikool_data:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "-gx5NwKTpVVd_wSTmvX61n3gtfWhbtE2"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+volumes:
+  artikool_data:
